@@ -27,13 +27,7 @@ namespace OpenFootballApi.Services
 
         public object Post(Player request)
         {
-            if (request.Id <= 0)
-            {
-                Db.InsertAndGetIntId<Player>(request);
-            }
-            else
-                Db.Update(request);
-
+            Db.SaveAndGetIntId<Player>(request);
             return request;
         }
 
