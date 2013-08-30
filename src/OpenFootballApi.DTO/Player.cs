@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+using ServiceStack.DataAnnotations;
 using ServiceStack.ServiceHost;
 
 namespace OpenFootballApi.DTO
@@ -9,8 +11,12 @@ namespace OpenFootballApi.DTO
     [Route("/players/{Id}")]
     public class Player : IReturn<Player>
     {
+        [AutoIncrement]
         public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
     }
+
+    [Route("/players")]
+    public class AllPlayers : IReturn<List<Player>> { }
 }

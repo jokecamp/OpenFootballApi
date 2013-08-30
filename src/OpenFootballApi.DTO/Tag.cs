@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+using ServiceStack.DataAnnotations;
 using ServiceStack.DesignPatterns.Model;
 using ServiceStack.ServiceHost;
 
@@ -10,7 +12,12 @@ namespace OpenFootballApi.DTO
     [Route("/tags/{Id}")]
     public class Tag : IHasId<int>, IReturn<Tag>
     {
+        [AutoIncrement]
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
+
+    [Route("/tags")]
+    public class AllTags : IReturn<List<Tag>> { }
 }
