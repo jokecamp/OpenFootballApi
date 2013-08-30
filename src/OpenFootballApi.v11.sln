@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.DTO", "Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.Web", "OpenFootballApi.Web\OpenFootballApi.Web.csproj", "{CBDC8250-66D7-4F6F-B2F6-9351DA1FF2AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.Services", "OpenFootballApi.Services\OpenFootballApi.Services.csproj", "{C98813EA-E62E-4714-B43B-452E843DC2FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{CBDC8250-66D7-4F6F-B2F6-9351DA1FF2AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBDC8250-66D7-4F6F-B2F6-9351DA1FF2AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBDC8250-66D7-4F6F-B2F6-9351DA1FF2AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
