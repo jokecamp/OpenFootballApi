@@ -2,11 +2,12 @@
 using ServiceStack.DataAnnotations;
 using ServiceStack.DesignPatterns.Model;
 using ServiceStack.ServiceHost;
+using OpenFootballApi.DTO.Interfaces;
 
 namespace OpenFootballApi.DTO
 {
     [Route("/playertags/{Id}")]
-    public class PlayerTag : IHasId<int>, IReturn<PlayerTag>
+    public class PlayerTag : IWithId<int>, IReturn<PlayerTag>
     {
         [AutoIncrement]
         public int Id { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ServiceStack.DataAnnotations;
 using ServiceStack.DesignPatterns.Model;
 using ServiceStack.ServiceHost;
+using OpenFootballApi.DTO.Interfaces;
 
 namespace OpenFootballApi.DTO
 {
@@ -10,7 +11,7 @@ namespace OpenFootballApi.DTO
     /// A descriptive tag/attribute that will describe mainly players
     /// </summary>
     [Route("/tags/{Id}")]
-    public class Tag : IHasId<int>, IReturn<Tag>
+    public class Tag : IWithId<int>, IReturn<Tag>
     {
         [AutoIncrement]
         public int Id { get; set; }

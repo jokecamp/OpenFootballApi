@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\IDbConnectionExtensions.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="PlayerTagService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

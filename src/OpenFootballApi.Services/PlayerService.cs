@@ -3,6 +3,7 @@ using System.Linq;
 using OpenFootballApi.DTO;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface;
+using OpenFootballApi.Services.Extensions;
 
 namespace OpenFootballApi.Services
 {
@@ -18,10 +19,18 @@ namespace OpenFootballApi.Services
             return p;
         }
 
+        public object Delete(Player request)
+        {
+            Db.Delete(request);
+            return null;
+        }
+
         public object Post(Player request)
         {
             if (request.Id <= 0)
-                Db.Insert(request);
+            {
+                Db.InsertAndGetIntId<Player>(request);
+            }
             else
                 Db.Update(request);
 

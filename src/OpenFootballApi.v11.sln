@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.DTO", "OpenFootballApi.DTO\OpenFootballApi.DTO.csproj", "{58AE347F-EDB9-4B30-A2B1-8A1B3FF5F8FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.Web", "OpenFootballApi.Web\OpenFootballApi.Web.csproj", "{CBDC8250-66D7-4F6F-B2F6-9351DA1FF2AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.Services", "OpenFootballApi.Services\OpenFootballApi.Services.csproj", "{C98813EA-E62E-4714-B43B-452E843DC2FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{31493437-5314-429D-954C-3AFFA527D281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenFootballApi.Integration.Tests", "..\tests\OpenFootballApi.Integration.Tests\OpenFootballApi.Integration.Tests.csproj", "{3204D306-2BC4-4154-84AA-2C00E3C01C2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +29,15 @@ Global
 		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98813EA-E62E-4714-B43B-452E843DC2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3204D306-2BC4-4154-84AA-2C00E3C01C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3204D306-2BC4-4154-84AA-2C00E3C01C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3204D306-2BC4-4154-84AA-2C00E3C01C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3204D306-2BC4-4154-84AA-2C00E3C01C2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3204D306-2BC4-4154-84AA-2C00E3C01C2C} = {31493437-5314-429D-954C-3AFFA527D281}
 	EndGlobalSection
 EndGlobal

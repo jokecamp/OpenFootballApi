@@ -3,6 +3,7 @@ using System.Linq;
 using OpenFootballApi.DTO;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface;
+using OpenFootballApi.Services.Extensions;
 
 namespace OpenFootballApi.Services
 {
@@ -23,7 +24,7 @@ namespace OpenFootballApi.Services
             if (request.Id <= 0)
             {
                 request.Count = 1;
-                Db.Insert(request);
+                Db.InsertAndGetIntId<PlayerTag>(request);
             }
             else
             {
