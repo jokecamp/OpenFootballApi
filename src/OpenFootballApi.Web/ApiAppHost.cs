@@ -2,6 +2,7 @@
 using OpenFootballApi.DTO;
 using OpenFootballApi.Services;
 using ServiceStack.OrmLite;
+using ServiceStack.ServiceInterface.Cors;
 using ServiceStack.WebHost.Endpoints;
 
 namespace OpenFootballApi.Web
@@ -19,6 +20,8 @@ namespace OpenFootballApi.Web
         /// <param name="container">The built-in IoC used with ServiceStack.</param>
         public override void Configure(Container container)
         {
+            Plugins.Add(new CorsFeature());
+
             container.Register<IDbConnectionFactory>(new OrmLiteConnectionFactory(":memory:", false, ServiceStack.OrmLite.SqliteDialect.Provider));
 
             var db = container.TryResolve<IDbConnectionFactory>();

@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenFootballApi.DTO;
+using OpenFootballApi.DTO.Interfaces;
 using ServiceStack.Service;
 using ServiceStack.ServiceClient.Web;
+using ServiceStack.ServiceHost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,5 +60,28 @@ namespace OpenFootballApi.Integration.Tests
             _client.Get(new Player { Id = 2 });
         }
 
+        [Test]
+        public void Player_CRUD()
+        {
+            Test_Rest_CRUD.Test<Player>(_client, MockDataProvider.NewPlayer);
+        }
+
+    }
+
+    public class Test_Rest_CRUD
+    {
+        public static void Test<TRequest>(IRestClient client, TRequest request) 
+            where TRequest : IWithId<int>, IReturn<TRequest>, new()
+        {
+            Assert.AreEqual(request.Id, 0);
+            client.Post<TRequest>(request);
+            Assert.Greater(request.Id, 0);
+
+            client.Post<TRequest>(request);
+            Assert.Greater(request.Id, 0);
+
+            //client.Delete<TRequest>(request);
+            //Assert.IsNull(request);
+        }
     }
 }

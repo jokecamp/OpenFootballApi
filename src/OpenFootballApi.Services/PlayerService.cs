@@ -31,6 +31,8 @@ namespace OpenFootballApi.Services
             return request;
         }
 
+        public void Options(Player request) { }
+
         public object Get(AllPlayers request)
         {
             return Db.Select<Player>().ToList();

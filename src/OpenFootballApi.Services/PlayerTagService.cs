@@ -9,6 +9,8 @@ namespace OpenFootballApi.Services
 {
     public class PlayerTagService : Service
     {
+        public void Options(PlayerTag request) { }
+
         public object Get(PlayerTag request)
         {
             var pt = Db.QueryById<PlayerTag>(request.Id);
