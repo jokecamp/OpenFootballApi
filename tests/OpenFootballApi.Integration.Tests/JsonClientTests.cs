@@ -29,41 +29,33 @@ namespace OpenFootballApi.Integration.Tests
         [Test]
         public void Can_GET_AllPlayers()
         {
-            Assert.Greater(_client.Get(new AllPlayers()).Count, 0);
-        }
-
-        [Test]
-        public void Can_POST_NewPlayer()
-        {
-            var p = _client.Post(new Player { Firstname = "Testy", Lastname = "Tester" });
-            Assert.Greater(p.Id, 0);
-        }
-
-        [Test]
-        public void Can_POST_ExistingPlayer()
-        {
-            var p = _client.Post(new Player { Id = 1, Firstname = "Testy", Lastname = "Tester" });
-            Assert.Greater(p.Id, 0);
-        }
-
-        [Test]
-        public void Can_DELETE_Player()
-        {
-            var p = _client.Delete(new Player { Id = 2 });
-            Assert.IsNull(p);
-
-            Assert.Throws(typeof(WebServiceException), new TestDelegate(MethodThatThrows));
-        }
-
-        private void MethodThatThrows()
-        {
-            _client.Get(new Player { Id = 2 });
+            _client.Post(new Player());
+            _client.Post(new Player());
+            Assert.Greater(_client.Get(new AllPlayers()).Count, 1);
         }
 
         [Test]
         public void Player_CRUD()
         {
             Test_Rest_CRUD.Test<Player>(_client, MockDataProvider.NewPlayer);
+        }
+
+        [Test]
+        public void Tag_CRUD()
+        {
+            Test_Rest_CRUD.Test<Tag>(_client, MockDataProvider.NewTag);
+        }
+
+        [Test]
+        public void PlayerTag_CRUD()
+        {
+            Test_Rest_CRUD.Test<PlayerTag>(_client, MockDataProvider.NewPlayerTag);
+        }
+
+        [Test]
+        public void Team_CRUD()
+        {
+            Test_Rest_CRUD.Test<Team>(_client, MockDataProvider.NewTeam);
         }
 
     }
@@ -73,15 +65,23 @@ namespace OpenFootballApi.Integration.Tests
         public static void Test<TRequest>(IRestClient client, TRequest request) 
             where TRequest : IWithId<int>, IReturn<TRequest>, new()
         {
+            // New Item
             Assert.AreEqual(request.Id, 0);
-            client.Post<TRequest>(request);
-            Assert.Greater(request.Id, 0);
+            var response = client.Post<TRequest>(request);
+            Assert.Greater(response.Id, 0);
 
-            client.Post<TRequest>(request);
-            Assert.Greater(request.Id, 0);
+            // Update Existing Item
+            var response2 = client.Post<TRequest>(response);
+            Assert.Greater(response2.Id, 0);
 
-            //client.Delete<TRequest>(request);
-            //Assert.IsNull(request);
+            // Get
+            var getResponse = client.Get(response2);
+            Assert.AreEqual(getResponse.Id, response2.Id);
+
+            // Delete
+            var deletedReponse = client.Delete<TRequest>(getResponse);
+            Assert.IsNull(deletedReponse);
         }
     }
 }
+

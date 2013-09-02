@@ -3,11 +3,12 @@ using ServiceStack.DataAnnotations;
 using ServiceStack.DesignPatterns.Model;
 using ServiceStack.ServiceHost;
 using OpenFootballApi.DTO.Interfaces;
+using System;
 
 namespace OpenFootballApi.DTO
 {
     [Route("/playertags/{Id}")]
-    public class PlayerTag : IWithId<int>, IReturn<PlayerTag>
+    public class PlayerTag : IWithId<int>, IReturn<PlayerTag>, ITimestamped
     {
         [AutoIncrement]
         public int Id { get; set; }
@@ -19,6 +20,9 @@ namespace OpenFootballApi.DTO
         /// How many times has this player gotten this tag?
         /// </summary>
         public int Count { get; set; }
+
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
     }
 
     [Route("/playertags")]

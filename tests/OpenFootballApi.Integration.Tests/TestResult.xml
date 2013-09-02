@@ -1,30 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\OpenFootballApi.Integration.Tests.csproj" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-08-30" time="19:25:58">
+<test-results name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\OpenFootballApi.Integration.Tests.csproj" total="5" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-09-02" time="19:26:15">
   <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5472" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.2\bin" machine-name="JOE-PC" user="Joe" user-domain="Joe-PC" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\OpenFootballApi.Integration.Tests.csproj" executed="True" result="Failure" success="False" time="1.298" asserts="0">
+  <test-suite type="Project" name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\OpenFootballApi.Integration.Tests.csproj" executed="True" result="Success" success="True" time="0.104" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\bin\Debug\OpenFootballApi.Integration.Tests.dll" executed="True" result="Failure" success="False" time="1.284" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\bin\Debug\OpenFootballApi.Integration.Tests.dll" executed="True" result="Success" success="True" time="0.103" asserts="0">
         <results>
-          <test-suite type="Namespace" name="OpenFootballApi" executed="True" result="Failure" success="False" time="1.283" asserts="0">
+          <test-suite type="Namespace" name="OpenFootballApi" executed="True" result="Success" success="True" time="0.102" asserts="0">
             <results>
-              <test-suite type="Namespace" name="Integration" executed="True" result="Failure" success="False" time="1.283" asserts="0">
+              <test-suite type="Namespace" name="Integration" executed="True" result="Success" success="True" time="0.102" asserts="0">
                 <results>
-                  <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="1.283" asserts="0">
+                  <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.100" asserts="0">
                     <results>
-                      <test-suite type="TestFixture" name="JsonClientTests" executed="True" result="Failure" success="False" time="1.282" asserts="0">
+                      <test-suite type="TestFixture" name="JsonClientTests" executed="True" result="Success" success="True" time="0.093" asserts="0">
                         <results>
-                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.Player_CRUD" executed="True" result="Failure" success="False" time="1.271" asserts="2">
-                            <failure>
-                              <message><![CDATA[  Expected: greater than 0
-  But was:  0
-]]></message>
-                              <stack-trace><![CDATA[at OpenFootballApi.Integration.Tests.Test_Rest_CRUD.Test[TRequest](IRestClient client, TRequest request) in c:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\JsonClientTests.cs:line 78
-at OpenFootballApi.Integration.Tests.JsonClientTests.Player_CRUD() in c:\Users\Joe\Documents\GitHub\OpenFootballApi\tests\OpenFootballApi.Integration.Tests\JsonClientTests.cs:line 66
-]]></stack-trace>
-                            </failure>
-                          </test-case>
+                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.Can_GET_AllPlayers" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.Player_CRUD" executed="True" result="Success" success="True" time="0.014" asserts="5" />
+                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.PlayerTag_CRUD" executed="True" result="Success" success="True" time="0.014" asserts="5" />
+                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.Tag_CRUD" executed="True" result="Success" success="True" time="0.014" asserts="5" />
+                          <test-case name="OpenFootballApi.Integration.Tests.JsonClientTests.Team_CRUD" executed="True" result="Success" success="True" time="0.016" asserts="5" />
                         </results>
                       </test-suite>
                     </results>

@@ -34,6 +34,7 @@ namespace OpenFootballApi.Web
             db.Run(x => x.CreateTableIfNotExists<Player>());
             db.Run(x => x.CreateTableIfNotExists<PlayerTag>());
             db.Run(x => x.CreateTableIfNotExists<Tag>());
+            db.Run(x => x.CreateTableIfNotExists<Team>());
 
             /*
             db.Run(x => x.Insert(new Player {  Firstname="first", Lastname="last" }));
