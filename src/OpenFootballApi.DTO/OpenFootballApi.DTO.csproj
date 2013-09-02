@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IWithId.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerReport.cs" />
     <Compile Include="PlayerTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />

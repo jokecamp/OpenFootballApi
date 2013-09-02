@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OpenFootballApi.DTO;
 
-namespace OpenFootballApi.Web
+namespace OpenFootballApi.Integration.Tests
 {
     public class MockData
     {

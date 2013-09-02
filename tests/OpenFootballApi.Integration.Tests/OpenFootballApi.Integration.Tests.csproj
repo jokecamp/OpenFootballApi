@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonClientTests.cs" />
+    <Compile Include="MockData.cs" />
     <Compile Include="MockDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

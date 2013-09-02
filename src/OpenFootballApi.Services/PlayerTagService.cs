@@ -4,10 +4,11 @@ using OpenFootballApi.DTO;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface;
 using OpenFootballApi.Services.Extensions;
+using ServiceStack.ServiceHost;
 
 namespace OpenFootballApi.Services
 {
-    public class PlayerTagService : Service
+    public class PlayerTagService : Service, IGet<PlayerTag>, IPost<PlayerTag>, IDeleteVoid<PlayerTag>
     {
         public void Options(PlayerTag request) { }
 
@@ -40,6 +41,11 @@ namespace OpenFootballApi.Services
         public object Get(AllPlayerTags request)
         {
             return Db.Select<PlayerTag>().ToList();
+        }
+
+        public void Delete(PlayerTag request)
+        {
+            Db.Delete(request);
         }
     }
 }

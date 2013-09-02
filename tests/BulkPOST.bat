@@ -1,0 +1,1 @@
+for /F "tokens=*" %%A in (player.json) do echo %%A

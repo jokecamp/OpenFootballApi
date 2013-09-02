@@ -4,6 +4,7 @@ using OpenFootballApi.Services;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface.Cors;
 using ServiceStack.WebHost.Endpoints;
+using System.Configuration;
 
 namespace OpenFootballApi.Web
 {
@@ -22,18 +23,23 @@ namespace OpenFootballApi.Web
         {
             Plugins.Add(new CorsFeature());
 
-            container.Register<IDbConnectionFactory>(new OrmLiteConnectionFactory(":memory:", false, ServiceStack.OrmLite.SqliteDialect.Provider));
+            container.Register<IDbConnectionFactory>(
+                new OrmLiteConnectionFactory(
+                    ConfigurationManager.ConnectionStrings["db"].ConnectionString,
+                    false,
+                    ServiceStack.OrmLite.SqliteDialect.Provider)
+                );
 
             var db = container.TryResolve<IDbConnectionFactory>();
             db.Run(x => x.CreateTableIfNotExists<Player>());
             db.Run(x => x.CreateTableIfNotExists<PlayerTag>());
             db.Run(x => x.CreateTableIfNotExists<Tag>());
 
-            // Setup some test data
-            MockData.Players.ForEach(player => db.Run(x => x.Insert(player)));
-            MockData.Tags.ForEach(tag => db.Run(x => x.Insert(tag)));
-            MockData.Tags.ForEach(tag => db.Run(x => x.Insert(new PlayerTag() { PlayerId = 1, TagId = 1, Count = 1})));
-            
+            /*
+            db.Run(x => x.Insert(new Player {  Firstname="first", Lastname="last" }));
+            db.Run(x => x.Insert(new PlayerTag { PlayerId = 1, TagId = 1 }));
+            db.Run(x => x.Insert(new Tag { Name = "tag" }));
+             */
         }
     }
 }
