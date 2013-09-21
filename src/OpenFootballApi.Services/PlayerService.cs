@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace OpenFootballApi.Services
 {
-    public class PlayerService : CrudService<Player, AllPlayers>
+    public class PlayerService : CrudService<Player, GetAllPlayers>
     {
         /// <summary>
         /// Get all players and their asscociated tags

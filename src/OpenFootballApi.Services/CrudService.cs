@@ -18,7 +18,7 @@ namespace OpenFootballApi.Services
     /// <typeparam name="TRequestAllItems"></typeparam>
     public abstract class CrudService<TRequest, TRequestAllItems> : Service,
         IGet<TRequest>, IPost<TRequest>, IDeleteVoid<TRequest>, IOptionsVoid<TRequest>
-        where TRequest : IWithId<int>, ITimestamped, new()
+        where TRequest : IWithId<int>, ITimestamped, ISoftDelete, new()
         where TRequestAllItems : IReturn<List<TRequest>>, new ()
     {
         public virtual List<TRequest> Get(TRequestAllItems request)
@@ -30,7 +30,7 @@ namespace OpenFootballApi.Services
         {
             var item = Db.QueryById<TRequest>(request.Id);
 
-            if (item == null)
+            if (item == null || item.Deleted == true)
                 throw HttpError.NotFound("Item with that id not found.");
 
             return item;
@@ -44,11 +44,27 @@ namespace OpenFootballApi.Services
             return request;
         }
 
-        public virtual void Delete(TRequest request)
+        public virtual object Put(TRequest request)
         {
-            Db.Delete<TRequest>(request);
+            if (request.Id < 0)
+                throw new ArgumentException("Id must be greater than zero to save");
+
+            AddTimestamp(request);
+            Db.Save<TRequest>(request);
+            return request;
         }
 
+        public virtual void Delete(TRequest request)
+        {
+            request.Deleted = true;
+            AddTimestamp(request);
+            Db.Update<TRequest>(request);
+        }
+
+        /// <summary>
+        /// Provide empty Options for enabling CORS
+        /// </summary>
+        /// <param name="request"></param>
         public virtual void Options(TRequest request) { }
 
         private void AddTimestamp(TRequest request)

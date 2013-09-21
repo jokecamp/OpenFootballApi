@@ -4,12 +4,13 @@ using ServiceStack.DesignPatterns.Model;
 using ServiceStack.ServiceHost;
 using OpenFootballApi.DTO.Interfaces;
 using System;
+using System.Runtime.Serialization;
 
 namespace OpenFootballApi.DTO
 {
     [Route("/playertags/{Id}")]
     [Table]
-    public class PlayerTag : IWithId<int>, IReturn<PlayerTag>, ITimestamped
+    public class PlayerTag : IWithId<int>, IReturn<PlayerTag>, ITimestamped, ISoftDelete
     {
         [AutoIncrement]
         public int Id { get; set; }
@@ -24,6 +25,9 @@ namespace OpenFootballApi.DTO
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+
+        [IgnoreDataMember]
+        public bool Deleted { get; set; }
     }
 
     [Route("/playertags")]

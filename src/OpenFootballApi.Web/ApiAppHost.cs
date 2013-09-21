@@ -31,14 +31,15 @@ namespace OpenFootballApi.Web
                     ServiceStack.OrmLite.SqliteDialect.Provider)
                 );
 
+            ConfigureDatabase(container);
+        }
+
+        private void ConfigureDatabase(Container container)
+        {
             // find all the DTOs we will be storing and ensure the tables exist
             var dtos = TableAttribute.GetTableClasses(typeof(Player).Assembly).Cast<System.Type>().ToArray();
             var db = container.TryResolve<IDbConnectionFactory>();
             db.Run(x => x.CreateTableIfNotExists(dtos));
-
-            db.Run(x => x.InsertAll(TestData.Players));
-            db.Run(x => x.InsertAll(TestData.Teams));
-            db.Run(x => x.InsertAll(TestData.Links));
         }
     }
 }

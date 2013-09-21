@@ -6,6 +6,7 @@ using ServiceStack.ServiceClient.Web;
 using ServiceStack.ServiceHost;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,20 +19,24 @@ namespace OpenFootballApi.Integration.Tests
     [TestFixture]
     public class JsonClientTests
     {
-        private IRestClient _client;
+        public IRestClient _client;
 
-        [SetUp]
-        public void Setup()
+        public JsonClientTests()
         {
             _client = new JsonServiceClient("http://localhost:30001/api/");
+
+            MockData.Players.ForEach(x => _client.Post(x));
+            MockData.Teams.ForEach(x => _client.Post(x));
+            MockData.Links.ForEach(x => _client.Post(x));
+            MockData.Tags.ForEach(x => _client.Post(x));
         }
 
         [Test]
         public void Can_GET_AllPlayers()
         {
-            _client.Post(new Player());
-            _client.Post(new Player());
-            Assert.Greater(_client.Get(new AllPlayers()).Count, 1);
+            var items = _client.Get(new GetAllPlayers());
+            items.ForEach(x => Console.Error.WriteLine("name = " + x.Firstname));
+            Assert.Greater(items.Count, 0);
         }
 
         [Test]
@@ -57,13 +62,12 @@ namespace OpenFootballApi.Integration.Tests
         {
             Test_Rest_CRUD.Test<Team>(_client, MockDataProvider.NewTeam);
         }
-
     }
 
     public class Test_Rest_CRUD
     {
         public static void Test<TRequest>(IRestClient client, TRequest request) 
-            where TRequest : IWithId<int>, IReturn<TRequest>, new()
+            where TRequest : IWithId<int>, ITimestamped, IReturn<TRequest>, new()
         {
             // New Item
             Assert.AreEqual(request.Id, 0);
@@ -71,8 +75,9 @@ namespace OpenFootballApi.Integration.Tests
             Assert.Greater(response.Id, 0);
 
             // Update Existing Item
-            var response2 = client.Post<TRequest>(response);
+            var response2 = client.Put<TRequest>(response);
             Assert.Greater(response2.Id, 0);
+            Assert.Greater(response2.DateModified, response.DateModified);
 
             // Get
             var getResponse = client.Get(response2);
