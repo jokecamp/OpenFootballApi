@@ -12,6 +12,7 @@ namespace OpenFootballApi.DTO
     /// A descriptive tag/attribute that will describe mainly players
     /// </summary>
     [Route("/tags/{Id}")]
+    [Table]
     public class Tag : IWithId<int>, IReturn<Tag>, ITimestamped
     {
         [AutoIncrement]

@@ -5,6 +5,7 @@ using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface.Cors;
 using ServiceStack.WebHost.Endpoints;
 using System.Configuration;
+using System.Linq;
 
 namespace OpenFootballApi.Web
 {
@@ -30,17 +31,14 @@ namespace OpenFootballApi.Web
                     ServiceStack.OrmLite.SqliteDialect.Provider)
                 );
 
+            // find all the DTOs we will be storing and ensure the tables exist
+            var dtos = TableAttribute.GetTableClasses(typeof(Player).Assembly).Cast<System.Type>().ToArray();
             var db = container.TryResolve<IDbConnectionFactory>();
-            db.Run(x => x.CreateTableIfNotExists<Player>());
-            db.Run(x => x.CreateTableIfNotExists<PlayerTag>());
-            db.Run(x => x.CreateTableIfNotExists<Tag>());
-            db.Run(x => x.CreateTableIfNotExists<Team>());
+            db.Run(x => x.CreateTableIfNotExists(dtos));
 
-            /*
-            db.Run(x => x.Insert(new Player {  Firstname="first", Lastname="last" }));
-            db.Run(x => x.Insert(new PlayerTag { PlayerId = 1, TagId = 1 }));
-            db.Run(x => x.Insert(new Tag { Name = "tag" }));
-             */
+            db.Run(x => x.InsertAll(TestData.Players));
+            db.Run(x => x.InsertAll(TestData.Teams));
+            db.Run(x => x.InsertAll(TestData.Links));
         }
     }
 }

@@ -8,6 +8,7 @@ using System;
 namespace OpenFootballApi.DTO
 {
     [Route("/playertags/{Id}")]
+    [Table]
     public class PlayerTag : IWithId<int>, IReturn<PlayerTag>, ITimestamped
     {
         [AutoIncrement]

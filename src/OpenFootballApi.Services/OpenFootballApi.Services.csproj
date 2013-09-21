@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="CrudService.cs" />
     <Compile Include="Extensions\IDbConnectionExtensions.cs" />
+    <Compile Include="ItemLinkService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="PlayerTagService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,6 +11,7 @@ namespace OpenFootballApi.DTO
     /// Serves as our main Player DOT (model or POCO) and as a request for an indiviual Player.
     /// </summary>
     [Route("/players/{Id}")]
+    [Table]
     public class Player : IReturn<Player>, IWithId<int>, ITimestamped
     {
         [AutoIncrement]

@@ -9,6 +9,7 @@ using System.Text;
 namespace OpenFootballApi.DTO
 {
     [Route("/teams/{Id}")]
+    [Table]
     public class Team : IWithId<int>, ITimestamped, IReturn<Team>
     {
         [AutoIncrement]
