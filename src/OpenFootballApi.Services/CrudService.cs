@@ -36,8 +36,15 @@ namespace OpenFootballApi.Services
             return item;
         }
 
+        /// <summary>
+        /// Perform anything before PUTs/POSTs
+        /// </summary>
+        /// <param name="request"></param>
+        public virtual void PreSave(TRequest request) { }
+
         public virtual object Post(TRequest request)
         {
+            PreSave(request);
             AddTimestamp(request);
             Db.Save<TRequest>(request);
             request.Id = request.Id > 0 ? request.Id : (int)Db.GetLastInsertId();
@@ -49,6 +56,7 @@ namespace OpenFootballApi.Services
             if (request.Id < 0)
                 throw new ArgumentException("Id must be greater than zero to save");
 
+            PreSave(request);
             AddTimestamp(request);
             Db.Save<TRequest>(request);
             return request;

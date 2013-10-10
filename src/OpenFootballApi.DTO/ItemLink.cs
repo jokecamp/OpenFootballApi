@@ -1,4 +1,5 @@
-﻿using OpenFootballApi.DTO.Interfaces;
+﻿using OpenFootballApi.DTO.Attributes;
+using OpenFootballApi.DTO.Interfaces;
 using ServiceStack.DataAnnotations;
 using ServiceStack.ServiceHost;
 using System;
@@ -9,6 +10,9 @@ using System.Text;
 
 namespace OpenFootballApi.DTO
 {
+    /// <summary>
+    /// Ability to tag generic items to links
+    /// </summary>
     [Table]
     [Route("/links/{Id}")]
     public class ItemLink : IWithId<int>, ITimestamped, IReturn<ItemLink>, ISoftDelete

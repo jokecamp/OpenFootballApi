@@ -1,5 +1,6 @@
 ﻿using Funq;
 using OpenFootballApi.DTO;
+using OpenFootballApi.DTO.Attributes;
 using OpenFootballApi.Services;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface.Cors;

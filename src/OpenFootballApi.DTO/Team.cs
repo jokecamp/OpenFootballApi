@@ -1,4 +1,5 @@
-﻿using OpenFootballApi.DTO.Interfaces;
+﻿using OpenFootballApi.DTO.Attributes;
+using OpenFootballApi.DTO.Interfaces;
 using ServiceStack.DataAnnotations;
 using ServiceStack.ServiceHost;
 using System;

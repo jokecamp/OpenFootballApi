@@ -5,6 +5,7 @@ using ServiceStack.ServiceHost;
 using OpenFootballApi.DTO.Interfaces;
 using System;
 using System.Runtime.Serialization;
+using OpenFootballApi.DTO.Attributes;
 
 namespace OpenFootballApi.DTO
 {
@@ -19,9 +20,9 @@ namespace OpenFootballApi.DTO
         public int TagId { get; set; }
 
         /// <summary>
-        /// How many times has this player gotten this tag?
+        /// Allow users to vote for attributes to voice their opinion
         /// </summary>
-        public int Count { get; set; }
+        public int Votes { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

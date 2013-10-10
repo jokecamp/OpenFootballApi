@@ -6,6 +6,7 @@ using ServiceStack.ServiceHost;
 using OpenFootballApi.DTO.Interfaces;
 using System;
 using System.Runtime.Serialization;
+using OpenFootballApi.DTO.Attributes;
 
 namespace OpenFootballApi.DTO
 {

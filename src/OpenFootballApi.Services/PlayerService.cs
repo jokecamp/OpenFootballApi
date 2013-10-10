@@ -41,5 +41,26 @@ namespace OpenFootballApi.Services
 
             return reports;
         }
+
+        public override void PreSave(Player request)
+        {
+            if (string.IsNullOrWhiteSpace(request.DisplayName))
+            {
+                request.DisplayName = string.Format("{0} {1}", request.Firstname, request.Lastname).Trim();
+            }
+        }
+
+        public object Get(GetPlayerData request)
+        {
+            var data = new PlayerData()
+            {
+                Player = Db.GetById<Player>(request.PlayerId),
+                Links = Db.Where<ItemLink>(x => x.ItemType == ItemType.Player).ToList(),
+                PlayerTags = Db.Where<PlayerTag>(x => x.PlayerId == request.PlayerId).ToList(),
+            };
+            data.Tags = Db.Where<Tag>(x => data.PlayerTags.Select(t => t.TagId).Contains(x.Id)).ToList();
+
+            return data;
+        }
     }
 }

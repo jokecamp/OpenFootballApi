@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OpenFootballApi.DTO
+namespace OpenFootballApi.DTO.Attributes
 {
     /// <summary>
     /// Marker attribute to indicate will will store this DTO as a table
